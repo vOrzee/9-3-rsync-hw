@@ -23,11 +23,24 @@
 
 [crontab](./scripts/crontab)
 ```
-
+10 16 * * * /bin/bash /home/tual/sflt/hw2/sheduler.sh
 ```
 [скрипт](./scripts/sheduler.sh)
 ```
+#!/bin/bash
+LOG="${HOME}/rsync.log"
 
+mkdir -p "${HOME}/log"
+rsync -a --delete /home/tual/ /tmp/backup/ 1>/dev/null 2>/dev/null
+
+if [ $? -eq 0 ]; then
+    echo "$(date) - Резервное копирование успешно завершено" >> "$LOG"
+    exit 0
+else
+    echo "$(date) - Резервное копирование не удалось" >> "$LOG"
+    exit 1
+fi
 ```
 
-![Скриншот с результатом работы утилиты](./img/img2.png)
+![Скриншот с результатом работы утилиты (прямой запуск)](./img/img2-1.png)
+![Скриншот с результатом работы утилиты (запуск по crontab)](./img/img2-1.png)
