@@ -23,7 +23,7 @@
 
 [crontab](./scripts/crontab)
 ```
-10 16 * * * /bin/bash /home/tual/sflt/hw2/sheduler.sh
+15 16 * * * /bin/bash /home/tual/sflt/hw2/sheduler.sh
 ```
 [скрипт](./scripts/sheduler.sh)
 ```
